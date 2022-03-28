@@ -1,0 +1,49 @@
+Cypress.Commands.add("signIn",(locator)=>{
+    cy.get(locator).click()
+})
+Cypress.Commands.add("createAc",(locator)=>{
+    cy.get(locator).click()
+})
+Cypress.Commands.add("personalInfo",(locator,ftName,ltName,pWord)=>{
+    cy.get(locator).click()
+    cy.get('#customer_firstname').type(ftName)
+    cy.get('#customer_lastname').type(ltName)
+    cy.get('#passwd').type(pWord)
+})
+Cypress.Commands.add("yourAddress",(adrs,cityValue,pstCode,mobPhne,adrsAlias)=>{
+    cy.get('#address1').type(adrs)
+    cy.get('#city').type(cityValue)
+    cy.get('#postcode').type(pstCode)
+    cy.get('#phone_mobile').type(mobPhne)
+    cy.get('#alias').clear().type(adrsAlias)
+})
+Cypress.Commands.add("registerButton",(locator)=>{
+    cy.get(locator).click()
+})
+Cypress.Commands.add("verifyWelcomeMsg",(wlcmtxt)=>{
+    cy.get('.info-account').should('have.text',wlcmtxt)
+})
+Cypress.Commands.add("verifyHomePage",(myAct,cntctUs,snOut)=>{
+    cy.get('.page-heading').should('have.text',myAct)
+    cy.get('#contact-link').should('have.text',cntctUs)
+    cy.get('.logout').should('have.text',snOut)
+})
+Cypress.Commands.add("womenTshirts",()=>{
+    //cy.contains('Women').click({force:true}),
+    cy.contains('T-shirts').click({force:true})
+})
+Cypress.Commands.add("popupVerify",(data,pdName,pdClr,qty,ttl,ttlPrd,ttlShpng,ttlValue)=>{
+    cy.get('h2').contains(data).should('be.visible')
+    cy.get('.product-name').should('contain.text',pdName),
+    cy.get('#layer_cart_product_attributes').should('contain.text',pdClr),
+    cy.get('#layer_cart_product_quantity').should('contain.text',qty),
+    cy.get('#layer_cart_product_price').should('contain.text',ttl),
+    cy.get('.ajax_block_products_total').should('contain.text',ttlPrd),
+    cy.get('.ajax_cart_shipping_cost').should('contain.text',ttlShpng),
+    cy.get('.ajax_block_cart_total').should('contain.text',ttlValue)
+})
+
+Cypress.Commands.add('continueShpng_proceedChckoutBtns',()=>{
+    cy.get('[title="Continue shopping"]').should('be.visible')
+    cy.get('[title="Proceed to checkout"]').should('be.visible')
+})

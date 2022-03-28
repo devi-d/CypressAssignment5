@@ -1,0 +1,16 @@
+{
+    "emailCreate":"#email_create",
+    "signIn":".login",
+    "createAcBtn":"#SubmitCreate",
+    "genderMr":"#id_gender1",
+    "genderMrs":"#id_gender2",
+    "stateSlct":"#id_state" ,
+    "register":"#submitAccount"
+    
+
+
+  
+    
+
+
+}
